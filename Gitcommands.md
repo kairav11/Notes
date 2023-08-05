@@ -1,7 +1,7 @@
 # Git Commands
 
 Git allows you to basically maintain code history and go back to previous histories. <br><br>
-## Setup: 
+## Setup
 `git init`: Initialises an empty git repository to the path to maintain its history. Creates a hidden .git folder in the working directory. <br>
 `git status`: To find the files in the directory. These can be tracked or untracked. <br>
 `git add filename.txt`: Track all the changes in the folder from the last commit. It "stages" the changes. <br>
@@ -18,7 +18,10 @@ Git allows you to basically maintain code history and go back to previous histor
 `git merge branch-name` : Merges contents of new branch into the main branch. <br><br><br>
 ## Working with projects
 We dont always have access to major projects. To work on any feature or piece of code in an existing repository, we can **Fork** it onto a repository in our account and work on the changes. Then usually the finished code does not get merged with the main branch. It needs to be added to another branch and then we merge the main and the new branch.<br><br>
-`git clone url-of-the-repository` : 
+`git clone url-of-the-repository` : Copies the whole URL content into your working directory. <br>
+`git remote add upstream repository_url` : Adds the upstream URL - The repository from where the project files are downloaded. <br><br>
+## Pull requests
+Used to get your changes published <br>
 
 
 
