@@ -55,3 +55,17 @@ Immutable lists (cannot be changed once created) <br> Memory efficient when comp
 Uses parenthesis () with elements inside. When we use the `dict.values()` method, the key-value pairs are stored in tuples, as these should never change order. <br>
 `tuple1.count(element)` : Counts frequency of the element<br>
 `tuple1.index(element)` : Returns first index of the element's occurrence.<br>
+## Sets
+Sets are an unordered collection of unique elements. <br> To create an empty set, use `set1=set()`. <br> 
+`set1.add(element)` : Adds element to the set. <br> 
+`setdiff = set1.difference(set2)` : Stores the set difference of set1-set2 into setdiff. <br>
+`set1.difference_update(set2)` : Evaluates set1-set2 and stores it back into set1. <br>
+`set1.discard(element)` : Removes the element from the set. <br>
+`set3 = set1.intersection(set2)` : Stores intersection of set1 and set2 into set3. <br>
+`set1.isdisjoint(set2)` : Returns True or False. <br>
+`set1.update(set2)` : Stores union of set1 and set2 into set1. <br>
+
+ 
+
+
+
