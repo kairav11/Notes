@@ -11,7 +11,7 @@ Python supports a variety of string methods. The most important ones are <br>
 `str1.count(substr1)` : Counts occurences of the substring in the string. <br>
 `str1.replace(substr1,substr2)` : Replaces occurences of substr1 with substr2. <br>
 ### String slicing
-`substr = str1[start:stop:step]` : Stop is not inclusive. Default value of start is 1st index, stop is end, step is 1. <br>Negative indexing is possible. <br>
+`substr = str1[start:stop:step]` : Stop is not inclusive. Default value of start is 1st index, stop is end, step is 1. <br>Negative indexing is possible. <br>`str1.strip()` : Removes trailing and preceeding spaces in a string. <br>
 ### String formatting for printing
 There are two methods: <br>
 1) ***format() method*** : `print("The {2} {1} {0}".format("fox","brown","quick"))` : The number in brackets are the list indices. <br>
@@ -64,6 +64,17 @@ Sets are an unordered collection of unique elements. <br> To create an empty set
 `set3 = set1.intersection(set2)` : Stores intersection of set1 and set2 into set3. <br>
 `set1.isdisjoint(set2)` : Returns True or False. <br>
 `set1.update(set2)` : Stores union of set1 and set2 into set1. <br>
+## Looping and Control Flow
+Usage of for loop: <br>
+`for i in range(0,n,2)` : i starts from 0, ends at n, step = 2<br>
+`for a in list1:` : Traverse in a list<br>
+`for (a,b) in [(1,2),(3,4),(5,6)]` : Unpacks the tuples, assigns first one to a, second to b<br>
+Enumeration : Assigns numbers to elements in a list or charecters in a string. <br> Ex: `word = 'abcdefg'` <br> `for item in enumerate(word):` : a is treated as 0, b is treated as 2, etc. You can also specify start of the enumerate by `enumerate(iterable, start = )`<br><br>
+### Break, continue, pass
+`break` : Breaks out of the current while, do while or for loop.<br>
+`continue` : Goes to the top of the closest enclosing loop (Skips the current iteration) <br>
+`pass` : Does nothing<br>
+
 
  
 
