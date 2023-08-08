@@ -26,8 +26,11 @@ You can have only 1 pull request for 1 branch <br>
 `git push origin branchname` : Used to push all changes onto a branch.<br>
 One issue that arises is when the upstream repository is updated, but forked repository is not updated.  To update the forked repository, we can use the code : 
 `git checkout main
+
 git fetch --all --prune
+
 git reset --hard upstream/main
+
 git push origin main`<br>
 
 
