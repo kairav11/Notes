@@ -12,7 +12,13 @@ Python supports a variety of string methods. The most important ones are <br>
 `str1.replace(substr1,substr2)` : Replaces occurences of substr1 with substr2. <br>
 ### String slicing
 `substr = str1[start:stop:step]` : Stop is not inclusive. Default value of start is 1st index, stop is end, step is 1. <br>Negative indexing is possible. <br>
-
+### String formatting for printing
+There are two methods: <br>
+1) ***format() method*** : `print("The {2} {1} {0}".format("fox","brown","quick"))` : The number in brackets are the list indices. <br>
+`print("The {q}{b}{f}".format(f="fox",b="brown", q="quick"))` : Variables are assigned as placeholders. <br>
+`result = 100/3` `print("{r:0.3f}".format(r=result))` : Precision = 3 is set <br>
+2) ***f-strings***: <br>
+`name = "abcd"    print(f"My name is {name}")` <br>
 ## Math methods
 `round(float1)` : Rounds the number passed. <br>
 `math.ciel(float1)` : Performs cieling function. <br>
