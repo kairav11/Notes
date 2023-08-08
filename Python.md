@@ -46,3 +46,12 @@ Two or more lists can be concatenated using the `+` operator. <br>
 `list1.reverse()` : Reverses list.<br>
 `list1.sort()` : Sorts the list. If you want descending order, specify `list1.sort(reverse=True)` <br>
 ## Dictionaries
+It is an ordered mapping, key-value pair type data structure that does not allow duplicate values. <br> Ex: `dict1 = {'key1':2, 'key2':3}`<br>To access elements, we pass the keys. `dict1[key1]` returns 2. <br>To insert a new value, `dict1[new_key] = new_value` is used. This can be used for overwriting too.<br>
+To get all keys in a list format, `key_list = dict1.keys()`<br>
+To get all values in a list format, `value_list = dict1.values()`<br>
+To get key-value pairs in tuples, `dict1.items()`<br>
+## Tuples
+Immutable lists (cannot be changed once created) <br> Memory efficient when compared to lists.<br>
+Uses parenthesis () with elements inside. When we use the `dict.values()` method, the key-value pairs are stored in tuples, as these should never change order. <br>
+`tuple1.count(element)` : Counts frequency of the element<br>
+`tuple1.index(element)` : Returns first index of the element's occurrence.<br>
