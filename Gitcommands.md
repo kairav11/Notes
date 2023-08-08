@@ -22,6 +22,14 @@ We dont always have access to major projects. To work on any feature or piece of
 `git remote add upstream repository_url` : Adds the upstream URL - The repository from where the project files are downloaded. <br><br>
 ## Pull requests
 Used to get your changes published <br>
+You can have only 1 pull request for 1 branch <br>
+`git push origin branchname` : Used to push all changes onto a branch.<br>
+One issue that arises is when the upstream repository is updated, but forked repository is not updated.  To update the forked repository, we can use the code : 
+`git checkout main<br>
+git fetch --all --prune<br>
+git reset --hard upstream/main<br>
+git push origin main`<br>
+
 
 
 
