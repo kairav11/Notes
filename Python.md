@@ -18,7 +18,8 @@ There are two methods: <br>
 `print("The {q}{b}{f}".format(f="fox",b="brown", q="quick"))` : Variables are assigned as placeholders. <br>
 `result = 100/3` `print("{r:0.3f}".format(r=result))` : Precision = 3 is set <br>
 2) ***f-strings***: <br>
-`name = "abcd"``print(f"My name is {name}")` <br>
+`name = "abcd"`
+`print(f"My name is {name}")` <br>
 ## Math methods
 `round(float1)` : Rounds the number passed. <br>
 `math.ciel(float1)` : Performs cieling function. <br>
@@ -46,9 +47,15 @@ Two or more lists can be concatenated using the `+` operator. <br>
 `list1.reverse()` : Reverses list.<br>
 `list1.sort()` : Sorts the list. If you want descending order, specify `list1.sort(reverse=True)` <br>
 ### 2D lists
-Ex: list1 = [1,2,3] , list2 = [4,5,6] , list3 = [7,8,9] , list4 = [list1,list2,list3] <br>
-list4[0][0] Refers to first list and first element. <br>
-list4[2][1] Refers to the third list and second element. <br>
+Ex: <br>
+```
+list1 = [1,2,3] 
+list2 = [4,5,6]  
+list3 = [7,8,9]  
+list4 = [list1,list2,list3] 
+list4[0][0] #Refers to first list and first element. 
+list4[2][1] #Refers to the third list and second element. 
+```
 ## Dictionaries
 It is an ordered mapping, key-value pair type data structure that does not allow duplicate values. You can iterate through a dictionary by using `for key,value in dict.items():`<br> Ex: `dict1 = {'key1':2, 'key2':3}`<br>To access elements, we pass the keys. `dict1[key1]` returns 2. <br>To insert a new value, `dict1[new_key] = new_value` is used. This can be used for overwriting too.<br>
 To get all keys in a list format, `key_list = dict1.keys()`<br>
@@ -85,12 +92,12 @@ def func_name(parameter_list):
 	func_body
 	return return_variable
 ```
-The parameters (Positional arguments) passed to a function are temporary variables. <br>##
+The parameters (Positional arguments) passed to a function are temporary variables. <br>
 ### Keyword Arguments 			 
-Unlike positional arguments, the arguments of the function are preceeded by an identifier. <br>Ex: multiply(num1 = 23, num2 = 34, num5 = 1) <br>
+Unlike positional arguments, the arguments of the function are preceeded by an identifier. <br>Ex: `multiply(num1 = 23, num2 = 34, num5 = 1)` <br>
 ### Nested function calls
 Using a return of one function as parameter for a second function and so on.
-<br>Ex: round(abs(float(input("Enter a number")))<br>
+<br>`Ex: round(abs(float(input("Enter a number")))`<br>
 ## Scope of a variable
 A variable is only availible from inside the region it is created. A global and locally scoped versions of a variable can be created. Global variables are created outside any function. <br>
 You can have a global and local version of a variable at the same time.<br>Priority order: <br>1 - Local varibles <br>2 - Enclosing variable<br>3 - Global variable<br>4 - Built in variable<br>
@@ -108,9 +115,9 @@ add(1,2,3,4,5)
 add(1,2,5,6)
 ```
 <br>
-## **kwargs
-Parameter similar to *args, but this packs all arguments into a dictionary. It is useful so that a function can accept a varying amount of ***keyword arguments***. <br>
-Ex: 
+##  **kwargs
+It is a Parameter similar to *args, but this packs all arguments into a dictionary. It is useful so that a function can accept a varying amount of keyword arguments. <br>
+Ex:<br>
 ```
 def hello(**kwargs):
 	print("Hello "+ kwargs['first'] + " " + kwargs['last'])
