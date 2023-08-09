@@ -210,4 +210,34 @@ shutil.copyfile('test.txt','copy.txt') # Source, destination
 `os.remove(path)` : Deletes the file.<br>
 `os.rmdir(path)` : Delets a directory.<br>
 `shutil.rmtree(path)` : Deletes a directory and all files in it. Proceed with caution when using this function.<br>
+## Classes and Objects
+You can combine attributes and methods to create an object. Class is a blueprint for object creation.<br>
+Ex: <br>
+```
+class Car:
+	make = None
+	model = None
+	year = None
+	color = None
+
+	def __init__(self,make,model,year,color): #This is a constructor.
+		self.make=make
+		self.model=model
+		self.year=year
+		self.color=color
+
+	def drive(self):
+		print("Driving")
+
+car1 = Car("Chevy","Corvette",2021,"blue")
+print(car1.make)
+car1.drive()
+```
+### Inheritence
+Classes can inherit attributes and methods from other classes. <br>
+
+
+
+
+
 
