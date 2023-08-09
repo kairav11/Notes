@@ -32,6 +32,18 @@ There are two methods: <br>
 `float1**float2` : Returns float1^float2. <br>
 `math.sqrt(int1)` : Returns square root. <br>
 `max(int1, int2, ---)` : Returns max value. (Also min(---) )<br>
+### Random module
+Has many uses. <br>
+Ex: 
+```
+import random
+x = random.randint(1,6)  #Selects a random int from 1 to 6 (6 not inclusive)
+y = random.random()      #Selects a random number
+list1 = ['rock', 'paper', 'scissors']
+z = random.choice(list1)
+cards = [1,2,3,4,5,6,7,8,9,"J","Q","K","A"]
+random.shuffle(cards)
+```
 ## Lists
 Lists support ordering, indexing, slicing, etc. Indexing starts from 0. <br>
 Two or more lists can be concatenated using the `+` operator. <br>
@@ -115,6 +127,7 @@ add(1,2,3,4,5)
 add(1,2,5,6)
 ```
 <br>
+
 ## **kwargs
 
 It is a Parameter similar to *args, but this packs all arguments into a dictionary. It is useful so that a function can accept a varying amount of keyword arguments. <br>
@@ -135,4 +148,66 @@ hello(first = "Bro")
 ```
 <br>
 
+## Exception handling 
+Exception is an event generated during execution that interrupts the flow of a program. Uses `try:` `except:` blocks. Any exception in a `try` block is thrown to the `except` block.
+Ex: <br>
+```
+try:
+	num1 = int(input())
+	num2 = int(input())
+	result = num1/num2
+
+except ZeroDivisionError as e:
+	print(e)
+	print("You cannot divide by zero!")
+except ValueError as e:
+	print("Enter numbers only!")
+else: 
+	print(result)
+finally:
+	print("This will always execute")
+```
+## File handling
+File paths need to be in double backslashes. 
+Ex: <br>
+```
+import os
+path = "C\\Users\\Desktop\\test.txt"
+if os.path.exists(path):
+	print("The location exists!")
+	if os.path.isfile(path):
+		print("This is a file")
+	elif os.path.isdir(path):
+		print("This is a directory")
+else:
+	print("Path not found")
+```
+### Reading and writing on files
+Always use try blocks for any kind of exceptions.<br>
+```
+with open('test.txt','w') as file:
+	print(file.read())
+
+#Writing
+text = "Heyy\n hello world\n 123493"
+
+with open('test.txt','w') as file:
+	file.write(text)
+
+```
+### Copying files
+`copyfile()` : Copies content of a file<br>
+`copy()` : `copyfile()` + permission mode + destination can be a directory<br>
+`copy2()` : `copy()` + copies the metadata of the file<br>
+Ex: <br>
+```
+import shutil
+shutil.copyfile('test.txt','copy.txt') # Source, destination
+```
+### Moving files
+`os.replace(source,destination)` : Moves file from source to destination<br>
+### Deleting a file
+`os.remove(path)` : Deletes the file.<br>
+`os.rmdir(path)` : Delets a directory.<br>
+`shutil.rmtree(path)` : Deletes a directory and all files in it. Proceed with caution when using this function.<br>
 
