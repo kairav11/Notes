@@ -45,8 +45,12 @@ Two or more lists can be concatenated using the `+` operator. <br>
 `list1.remove(element)` : Removes first occurence of the element. Throws error if element doesnt occur. <br>
 `list1.reverse()` : Reverses list.<br>
 `list1.sort()` : Sorts the list. If you want descending order, specify `list1.sort(reverse=True)` <br>
+### 2D lists
+Ex: list1 = [1,2,3] , list2 = [4,5,6] , list3 = [7,8,9] , list4 = [list1,list2,list3] <br>
+list4[0][0] Refers to first list and first element. <br>
+list4[2][1] Refers to the third list and second element. <br>
 ## Dictionaries
-It is an ordered mapping, key-value pair type data structure that does not allow duplicate values. <br> Ex: `dict1 = {'key1':2, 'key2':3}`<br>To access elements, we pass the keys. `dict1[key1]` returns 2. <br>To insert a new value, `dict1[new_key] = new_value` is used. This can be used for overwriting too.<br>
+It is an ordered mapping, key-value pair type data structure that does not allow duplicate values. You can iterate through a dictionary by using `for key,value in dict.items():`<br> Ex: `dict1 = {'key1':2, 'key2':3}`<br>To access elements, we pass the keys. `dict1[key1]` returns 2. <br>To insert a new value, `dict1[new_key] = new_value` is used. This can be used for overwriting too.<br>
 To get all keys in a list format, `key_list = dict1.keys()`<br>
 To get all values in a list format, `value_list = dict1.values()`<br>
 To get key-value pairs in tuples, `dict1.items()`<br>
@@ -56,7 +60,7 @@ Uses parenthesis () with elements inside. When we use the `dict.values()` method
 `tuple1.count(element)` : Counts frequency of the element<br>
 `tuple1.index(element)` : Returns first index of the element's occurrence.<br>
 ## Sets
-Sets are an unordered collection of unique elements. <br> To create an empty set, use `set1=set()`. <br> 
+Sets are an unordered collection of unique elements. These are unindexed. <br> To create an empty set, use `set1=set()`. <br> 
 `set1.add(element)` : Adds element to the set. <br> 
 `setdiff = set1.difference(set2)` : Stores the set difference of set1-set2 into setdiff. <br>
 `set1.difference_update(set2)` : Evaluates set1-set2 and stores it back into set1. <br>
@@ -71,12 +75,56 @@ Usage of for loop: <br>
 `for (a,b) in [(1,2),(3,4),(5,6)]` : Unpacks the tuples, assigns first one to a, second to b<br>
 Enumeration : Assigns numbers to elements in a list or charecters in a string. <br> Ex: `word = 'abcdefg'` <br> `for item in enumerate(word):` : a is treated as 0, b is treated as 2, etc. You can also specify start of the enumerate by `enumerate(iterable, start = )`<br><br>
 ### Break, continue, pass
-`break` : Breaks out of the current while, do while or for loop.<br>
-`continue` : Goes to the top of the closest enclosing loop (Skips the current iteration) <br>
+`break` : Breaks out of the current while, do while or for loop. Terminates the loop<br>
+`continue` : Goes to the top of the closest enclosing loop (Skips the current iteration and goes to the next  iteration.) <br>
 `pass` : Does nothing<br>
+## Functions in Python
+Function definition : 
+```
+def func_name(parameter_list):
+	func_body
+	return return_variable
+```
+The parameters (Positional arguments) passed to a function are temporary variables. <br>##
+### Keyword Arguments 			 
+Unlike positional arguments, the arguments of the function are preceeded by an identifier. <br>Ex: multiply(num1 = 23, num2 = 34, num5 = 1) <br>
+### Nested function calls
+Using a return of one function as parameter for a second function and so on.
+<br>Ex: round(abs(float(input("Enter a number")))<br>
+## Scope of a variable
+A variable is only availible from inside the region it is created. A global and locally scoped versions of a variable can be created. Global variables are created outside any function. <br>
+You can have a global and local version of a variable at the same time.<br>Priority order: <br>1 - Local varibles <br>2 - Enclosing variable<br>3 - Global variable<br>4 - Built in variable<br>
+## *args Parameter
+Packs all arguments passed into a tuple that is useful for making functions that accept a varying amount of arguments. You can name the *args it whatever you want. <br>
+Ex: 
+```
+def add(*args):
+	sum = 0
+	for i in args:
+		sum += i
+	return sum
 
+add(1,2,3,4,5)
+add(1,2,5,6)
+```
+<br>
+## **kwargs
+Parameter similar to *args, but this packs all arguments into a dictionary. It is useful so that a function can accept a varying amount of ***keyword arguments***. <br>
+Ex: 
+```
+def hello(**kwargs):
+	print("Hello "+ kwargs['first'] + " " + kwargs['last'])
 
- 
+(or)
 
+def hello(**kwargs):
+	print("Hello", end=" ")
+	for key,value in kwargs.items():
+		print(value, end=" ")
+
+hello(title = "Mr", first = "Bro", last = "Code")
+hello(first = "Bro")
+```
+<br>
 
 
