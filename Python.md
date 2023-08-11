@@ -235,9 +235,38 @@ car1.drive()
 ```
 ### Inheritence
 Classes can inherit attributes and methods from other classes. <br>
+Ex: <br>
+```
+#Multilevel inheritance
+class Parent:
+	data = True
 
+class Child(Parent):
+	def eat(self):
+		print("This animal is eating")
 
+class Grandchild(Child):
+	def bark(self):
+		print("Dog is barking")
 
+dog = Dog()
+print(dog.alive)
+dog.eat()
+dog.bark()
+```
+<br>Multiple inheritence - Two or more children from one parent
+### Method chaining 
+Calling multiple methods sequentially, each call performs an action on the same object and returns self. <br>
+Ex: <br>
+```
+class Car:
+	def turn_on(self):
+		print("You are starting the engine")
+		return self
+	def drive(self):
+		print("You are driving")
+		return self
 
-
-
+car = Car()
+car.turn_on().drive() #First calls turn on, then drives
+```
