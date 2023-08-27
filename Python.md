@@ -210,4 +210,265 @@ shutil.copyfile('test.txt','copy.txt') # Source, destination
 `os.remove(path)` : Deletes the file.<br>
 `os.rmdir(path)` : Delets a directory.<br>
 `shutil.rmtree(path)` : Deletes a directory and all files in it. Proceed with caution when using this function.<br>
+## Classes and Objects
+You can combine attributes and methods to create an object. Class is a blueprint for object creation.<br>
+Ex: <br>
+```
+class Car:
+	make = None
+	model = None
+	year = None
+	color = None
+
+	def __init__(self,make,model,year,color): #This is a constructor.
+		self.make=make
+		self.model=model
+		self.year=year
+		self.color=color
+
+	def drive(self):
+		print("Driving")
+
+car1 = Car("Chevy","Corvette",2021,"blue")
+print(car1.make)
+car1.drive()
+```
+### Inheritence
+Classes can inherit attributes and methods from other classes. <br>
+Ex: <br>
+```
+#Multilevel inheritance
+class Parent:
+	data = True
+
+class Child(Parent):
+	def eat(self):
+		print("This animal is eating")
+
+class Grandchild(Child):
+	def bark(self):
+		print("Dog is barking")
+
+dog = Dog()
+print(dog.alive)
+dog.eat()
+dog.bark()
+```
+<br>Multiple inheritence - Two or more children from one parent
+### Method overriding
+Ex: <br>
+```
+class Animal:
+	def eat(self):
+		print("The animal is eating")
+class Rabit(Animal):
+	def eat(self):
+		print("The rabit is eating")
+rabbit = Rabbit()
+rabbit.eat()  #Calls Rabbit class eat() method, If there was no eat() method in rabbit class,
+              #it would call the Animal class eat() method
+
+```
+### Method chaining 
+Calling multiple methods sequentially, each call performs an action on the same object and returns self. <br>
+Ex: <br>
+```
+class Car:
+	def turn_on(self):
+		print("You are starting the engine")
+		return self
+	def drive(self):
+		print("You are driving")
+		return self
+
+car = Car()
+car.turn_on().drive() #First calls turn on, then drives. You need to have the return self
+                      #statement for this call to work.
+```
+### super() function
+super() method is used to give access to the methods of a parent class. It returns a temporary object of a parent class when used. <br> 
+Ex: <br>
+```
+class Rectangle:
+	def __init__(self,length,width):
+		self.length = length
+		self.width = width
+
+class Square(Rectangle):
+	def __init__(self,length,width):
+		super().__init__(length,width)
+
+	def area(self):
+		return self.length*self.width
+
+class Cube(Rectangle):
+	def __init__(self,length,width,height):
+		super().__init__(length,width)
+		self.height = height
+
+	def volume(self):
+		return self.height*self.width*self.length
+
+square = Square(3,3)
+cube = Cube(3,3,3)
+print(cube.volume())
+```
+### Abstract classes
+Abstract classes prevents a user from creating an object of that class. It is like creating a template for creation of other classes.<br>
+It compels a user to override abstract methods in a child class. <br>
+`Abstract class` - A class which contains one or more abstract methods. <br>
+`Abstract method` - A method which only has a declaration but no implementation. <br>
+You need to first import `from abc import ABC, abstractmethod` (ABC stands for abstract base class)<br> Ex:<br>
+```
+from abc import ABC, abstract method
+
+class Vehicle(ABC):
+	@abstractmethod
+	def go(self):
+		pass
+
+class Car(Vehicle):
+	def go(self):
+		print("You are driving a car")
+
+class Motorcycle(Vehicle):
+	def go(self):
+		print("You are riding a motorcycle")
+
+car = Car()
+motorcycle = Motorcycle()
+car.go()
+motorcycle.go()
+```
+### Passing objects as arguments
+You can pass objects as arguments for a method. You can also use the same method for two or more classes.<br>
+Ex: <br>
+```
+class Car:
+	color = None
+
+class Bike:
+	color = None
+
+def change_color(vehicle,color):
+	vehicle.color = color
+
+car_1 = Car()
+car_2 = Car()
+bike_1 = Bike()
+
+change_color(car_1,"red")
+change_color(car_2,"white")
+change_color(bike_1,"yellow")
+
+print(car_1.color)
+print(car_2.color)
+print(bike_1.color)
+```
+### Duck typing
+It is a concept where the class of an object is less important than the methods or attributes. The class type is not checked if minimum methods or attributes are present. <br>
+Ex: <br>
+```
+class Duck:
+	def walk(self):
+		print("The duck is walking")
+	def talk(self):
+		print("The duck is talking")
+
+class Chicken:
+	def walk(self):
+		print("The chicken is walking")
+	def talk(self):
+		print("The chicken is talking")
+
+class Person:
+	def catch(self,duck):
+		duck.walk()
+		duck.talk()
+		print("You caught the animal")
+
+duck = Duck()
+chicken = Chicken()
+person = Person()
+
+#You can use the chicken object or the duck object as both classes contain the methods walk() and talk()
+person.catch(chicken)
+person.catch(duck)
+```
+## Walrus operator :=
+It is a new feature to Python 3.8. Assigns values to variables as part of a larger expression.<br>Ex: <br>
+```
+foods = list()
+
+#Normal assignment:
+while True:
+	food = input("What food do you like?")
+		if food == "quit":
+			break
+	foods.append(food)
+
+#Walrus operator:
+while food := input("What food do you like?") != "quit":
+	foods.append(food)
+
+```
+## Assigning functions to a variable
+Ex: <br>
+```
+def hello():
+	print("Hello")
+
+hi = hello
+hi()   #This is an ALIAS to hello() now.
+say = print
+say("This can be used for predefined methods too!")
+```
+## Higher order functions
+A function that either : 1) Accepts a function as an argument or 2) Returns a function
+Ex: 1) Accepting a function as an argument<br>
+```
+def loud(text):
+	return text.upper()
+
+def quiet(text):
+	return text.lower()
+
+def hello(func):
+	text = func("Hello")
+	print(text)
+
+hello(loud)  #Prints "HELLO"
+hello(quiet) #Prints "hello"
+```
+Ex: 2) Returning a function<br>
+```
+def divisor(x):
+	def dividend(y):
+		return y/x
+	return dividend
+
+divide = divisor(2)  #Becomes an ALIAS for dividend where divisor is 2
+print(divide(10))
+```
+## Lambda functions
+A function written in 1 line using the lambda keyword. It accepts any number of arguments, but has only one expression. (like a shortcut). <br>Syntax: lambda parameters:expression <br>
+Ex:<br>
+```
+def double(x):
+	return x*2
+print(double(5)
+# This function can be written as
+double = lambda x:x*2
+multiply = lambda x,y: x*y
+add = lambda x,y,z: x+y+z
+print(multiply(5,6))
+print(add(5,6,7))
+
+age_check = lambda age: True if age>= 18 else False
+print(age_check(age))
+```
+
+
+
+
 
