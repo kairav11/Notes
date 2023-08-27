@@ -219,7 +219,7 @@ class Car:
 	model = None
 	year = None
 	color = None
-<<<<<<< HEAD
+
 
 	def __init__(self,make,model,year,color): #This is a constructor.
 		self.make=make
@@ -238,7 +238,7 @@ car1.drive()
 Classes can inherit attributes and methods from other classes. <br>
 Ex: <br>
 ```
-#Multilevel inheritance
+# Multilevel inheritance
 class Parent:
 	data = True
 
@@ -467,61 +467,4 @@ print(add(5,6,7))
 
 age_check = lambda age: True if age>= 18 else False
 print(age_check(age))
-```
-
-
-
-
-=======
->>>>>>> 2c9c4e4afec773ade3e87373e81b6a467339e815
-
-	def __init__(self,make,model,year,color): #This is a constructor.
-		self.make=make
-		self.model=model
-		self.year=year
-		self.color=color
-
-	def drive(self):
-		print("Driving")
-
-car1 = Car("Chevy","Corvette",2021,"blue")
-print(car1.make)
-car1.drive()
-```
-### Inheritence
-Classes can inherit attributes and methods from other classes. <br>
-Ex: <br>
-```
-#Multilevel inheritance
-class Parent:
-	data = True
-
-class Child(Parent):
-	def eat(self):
-		print("This animal is eating")
-
-class Grandchild(Child):
-	def bark(self):
-		print("Dog is barking")
-
-dog = Dog()
-print(dog.alive)
-dog.eat()
-dog.bark()
-```
-<br>Multiple inheritence - Two or more children from one parent
-### Method chaining 
-Calling multiple methods sequentially, each call performs an action on the same object and returns self. <br>
-Ex: <br>
-```
-class Car:
-	def turn_on(self):
-		print("You are starting the engine")
-		return self
-	def drive(self):
-		print("You are driving")
-		return self
-
-car = Car()
-car.turn_on().drive() #First calls turn on, then drives
 ```
