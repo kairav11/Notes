@@ -452,7 +452,7 @@ divide = divisor(2)  #Becomes an ALIAS for dividend where divisor is 2
 print(divide(10))
 ```
 ## Lambda functions
-A function written in 1 line using the lambda keyword. It accepts any number of arguments, but has only one expression. (like a shortcut). <br>Syntax: lambda parameters:expression <br>
+A function written in 1 line using the lambda keyword. It accepts any number of arguments, but has only one expression. (like a shortcut). <br>Syntax: lambda parameters:expression. This returns the expression. <br>
 Ex:<br>
 ```
 def double(x):
@@ -467,4 +467,58 @@ print(add(5,6,7))
 
 age_check = lambda age: True if age>= 18 else False
 print(age_check(age))
+```
+## Sorting
+`sort()` method can be used with lists or iterables. It can be used to sort strings Alphabetically too. An iterable is any Python object capable of returning its members one at a time, permitting it to be iterated over in a for-loop. Familiar examples of iterables include lists, tuples, and strings.<br>
+`sort(reverse = True)` : Sorts in descending order<br>
+`sort()` method cant be used for tuples. For iterables, we use `sorted()` method.<br>
+By default, `sort()` method sorts using the first elemtent in case of a 2D list. To use other entries refer the example, <br>
+```
+students = [("S1","F",60),("A1","A",33),("D1","B",50)]
+students.sort() #Will sort using the first entries.
+
+age = lambda ages: ages[2]
+students.sort(key=age)  #Returns second column and sorts using their ages.
+#For a tuple of tuples, we use
+sorted_students = sorted(students, key=age)
+```
+## Map function 
+Applies a function to each item in an iterable. <br>
+Syntax : map(function, iterable) <br>
+Ex: <br>
+```
+#To change value in a tuple,
+store = [("Shirt",40.0),("Pant",50.0)]
+price_to_euro = lambda data: (data[0],data[1]*0.82)
+store_euros = list(map(to_euros,store))
+```
+## Filter function 
+Creates a collection of elements from an iterable for which a function returns True. It is similar to a search result with filters.<br>
+Ex: <br>
+```
+friends = [("Raj",19),("Ravi",17),("Chandler",21)]
+age_check = lambda data: data[1] >=18
+drinking_buddies = list(filter(age_check, friends))
+```
+## Reduce function 
+Applies a function to an iterable and reduces it to a single cumulative value. Performs its function on first two elements and repeats this process till only a single value remains. <br>Syntax: reduce(function,iterable) <br>
+Ex: <br>
+```
+import functools
+letters = ["H","E","L","L","O"]
+word = functools.reduce(lambda x,y: x+y, letters)  #Calls itself for x+y first, then uses letters 
+                                                   #and continues
+
+factorial = [5,4,3,2,1]
+result = functools.reduce(lambda x,y: x*y, factorial)
+```
+## List comprehension
+A way to create a new list with less syntax. It can mimic certain lambda functions, is easier to read.<br>Syntax: list = \[expression for item in iterable]  Ex: <br>
+```
+squares = []
+for i in range(1,11):
+	squares.append(i*i)
+
+# This can be done easily with list comprehension
+squares = [i*i for i in range(1,11)]
 ```
