@@ -513,7 +513,7 @@ factorial = [5,4,3,2,1]
 result = functools.reduce(lambda x,y: x*y, factorial)
 ```
 ## List comprehension
-A way to create a new list with less syntax. It can mimic certain lambda functions, is easier to read.<br>Syntax: list = \[expression for item in iterable]  Ex: <br>
+A way to create a new list with less syntax. It can mimic certain lambda functions, is easier to read.<br>Syntax: list = \[expression for item in iterable if conditional]  Ex: <br>
 ```
 squares = []
 for i in range(1,11):
@@ -522,3 +522,52 @@ for i in range(1,11):
 # This can be done easily with list comprehension
 squares = [i*i for i in range(1,11)]
 ```
+```
+students = [100,90,80,70,60,55,32,0,41]
+#Using filter() method
+passed_students = list(filter(lambda x: x>=60, students))
+
+#Using List comprehensions
+passed_students2 = [i if i>=60 else "FAILED" for i in students]
+```
+## Dictionary comprehension
+A way to create dictionaries using an expression. Can replace for loops and lambda functions. <br>Syntax : dictionary = {key: expression for (key,value) in iterable if conditional}<br>Ex:<br>
+```
+city_temp = {'New york':32, 'Boston':75, 'LA':100, 'Chicago':50}
+cities_in_Celcius = {key: round((value-32)*(5/9)) for (key,value) in city_temp.items()}
+
+#Using if conditional
+weather = {'New york':"snowing",'LA':"sunny",'CA':"sunny"}
+sunny = {key: value for (key,value) in weather.items() if value == "sunny"}
+#You can use functions too.
+```
+## zip(*iterables) function
+Aggregates elements from two or more iterables (lists, tuples, sets, etc). Creates a zip object with paired elements stored in tuples. <br>Ex:<br>
+```
+usernames = ["A","B","C"]
+passwords = ("abc","def","ghi")
+
+users = zip(usernames,passwords)
+#To make it a list or a dictionary,
+user_list = list(zip(usernames,passwords))
+user_dict = dict(zip(usernames,passwords))
+
+#You can even zip more than 2 iterables together
+login = ["1/1/2020",""2/2/2022","3/3/2023"]
+user_trio = zip(usernames,passwords,login)
+```
+## if __name__ == '__main__'
+Python interpretor sets "Special variables", one of which is `__name__`. Python assigns the `__name__` variable a value of `__main__` if it is the initial module being run.<br>A module can either be run as a standalone program, or can be imported by other modules. To check if the parent module is calling a particular method, the `if __name__ == '__main__'` can be used.<br>
+## Time module
+Many useful modules to deal with times and dates.<br>`time.ctime(0)` : Converts a time expressed in seconds since "epoch" to a readable sting. Epoch is when your computer thinks time began. (Reference starting point).<br>
+`time.time()` : Returns current seconds since epoch.<br>
+Combining both, `time.ctime(time.time())` Returns current time.<br>
+`time_object` can also be used. It has a lot of atributes like year,month,day,hour,min,secs,weekday etc. <br>
+`time_object = time.localtime()` : Returns current time.<br>
+`time.strftime(format,time_object)` : Many format specifiers are used to do different tasks like return year, date, etc.<br>We can also convert a tuple into a time object using `asctime()`: 
+```
+# Usage (year,month,day,hours,minutes,secs,#day of the week,#day of the year,daylight savings)
+time_tuple = (2020,4,20,4,20,0,0,0,0)
+time_string = time.asctime(time_tuple)
+```
+
