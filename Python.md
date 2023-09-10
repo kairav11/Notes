@@ -570,4 +570,112 @@ Combining both, `time.ctime(time.time())` Returns current time.<br>
 time_tuple = (2020,4,20,4,20,0,0,0,0)
 time_string = time.asctime(time_tuple)
 ```
+# Threading
+A thread is a flow of execution. It is like a separate order of instructions. However, each thread takes a turn running to achieve concurrency.<br>GIL - Global interpreter lock - Allows only one thread at a time. But other threads can take turns when one thread is idle. <br>
+Programs can be divided into - <br>
+CPU bound : When programs spend most of its time waiting for internal events (CPU intensive). This uses Multiprocessing. <br>
+IO bound : When programs spend most of its time waiting for external events (User input, web scraping,etc). This uses Multithreading.<br>
+Ex: <br>
+```
+import threading
+import time
 
+def eat():
+	time.sleep(3)  #Puts the main thread to sleep for 3s
+	print("Ate")
+
+def drink():
+	time.sleep(4)
+	print("Drank")
+
+def study():
+	time.sleep(5)
+	print("Studied")
+
+x = threading.Thread(target=eat,args=())  #Creation of a thread
+x.start()
+
+y = threading.Thread(target=drink, args=())
+y.start()
+
+z = threading.Thread(target=drink, args=())
+z.start()
+
+x.join()  #Main thread should wait for x to finish before it can move on to the next lines.
+
+
+#eat()
+#drink()
+#study()
+#Program will take 12 secs to complete. These tasks completed sequentially. We can create 3 #additional threads so that these 3 methods can run concurrently.
+#After creating three treads x,y,z the program only takes 5s to execute.
+
+print(threading.active_count())  #prints the number of threads running currently.
+print(threading.enumerate())  #Prints a list of the threads currently running.
+print(time.perf_counter())  #Prints how long main thread takes to complete.
+
+#You can add a countdown for user input using 2 threads, one for taking input and one main #thread.
+```
+## Daemon threads
+A thread that runs in the background. It is not important for program execution. Program does not wait for daemon threads to complete before exiting. Daemon threads are usually used for background tasks, garbage collection, waiting for input, long running processes,etc. Non daemon threads do not stop on their own.<br>
+Ex: <br>
+```
+import threading
+import time
+def timer():
+	print()
+	count = 0
+	while True:
+		time.sleep(1)
+		count+=1
+		print("logged in for :",count, "seconds")
+
+x = threading.Thread(target=timer)
+x.start()
+answer = input("Do you wish to exit?")
+
+# This function would keep running even if the answer was given. To fix this, we use daemon #threads. 
+#To make a thread daemon,
+x2 = threading.Thread(target=timer(), daemon = True)
+#Now as soon as all other tasks are finished, the daemon thread will be killed.
+```
+`thread.setDaemon(True/False)` : To change a thread into daemon/non daemon.<br>
+`thread.isDaemon()` : Returns True/False.<br>
+## Multiprocessing
+Running tasks in parallel on different CPU cores. It bypasses GIL used for threading. <br>
+Multiprocessing - Better for CPU bound tasks.<br>
+Multithreading - Better for IO bound tasks. <br>
+Ex:<br>
+```
+from multiprocessing import Process, cpu_count
+import time
+
+def counter(num):
+	count=0
+	while count < num:
+		count+=1
+
+def main():
+	print(cpu_count())  #Optimal when number of processes = number of cpu's
+	a = Process(target=counter, args=(1000000000,)) #Assigns one core for this process
+	a.start()
+	a.join()	
+
+	b = Process(target=counter, args=(50000000,)) #Divide the task into 2 processes.
+	c = Process(target=counter, args=(50000000,))
+
+	b.join()
+	c.join()
+	
+	print("Finished in",time.perf_counter(),"seconds") #Faster when 2 processes are used.
+
+
+
+#For windows systems, if we create a child, it copies the module and creates its own children.
+#To avoid this, use this block:
+if __name__ == '__main__':
+	main()
+
+```
+# Graphical User Interface
+ 
